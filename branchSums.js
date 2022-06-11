@@ -10,7 +10,20 @@
   left child node, and a right child node. Children
   nodes can either be BinaryTree nodes themselves or
   None / null.
+
+  e.g.
+
+           1
+        /     \
+       2       3
+     /   \    /  \
+    4     5  6    7
+  /   \  /
+ 8    9 10
 */
+
+// TIME COMPLEXITY: O(n)
+// SPACE COMPLEXITY: O(n) -> Number of nodes in the Binary Tree
 
 class BinaryTree {
   constructor(value) {
@@ -21,5 +34,18 @@ class BinaryTree {
 }
 
 function branchSums(root) {
-  
+  let sums = [];
+  traverse(0, sums, root);
+  return sums;
 }
+
+function traverse(currentSum, sums, root) {
+  if (!root) return;
+  if (!root.left && !root.right) {
+    sums.push(currentSum + root.value);
+    return;
+  }
+  if (root.left) traverse(currentSum + root.value, sums, root.left);
+  if (root.right) traverse(currentSum + root.value, sums, root.right);
+}
+
