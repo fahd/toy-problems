@@ -36,6 +36,12 @@ function nodeDepths(root) {
   return depthSum;
 }
 
+// Recursive
+function nodeDepthsRecursive(root, depth = 0) {
+  if (root === null) return 0;
+  return depth + nodeDepthsRecursive(root.left, depth + 1) + nodeDepthsRecursive(root.right, depth + 1);
+}
+
 class BinarySearchTree{
   constructor(value) {
     this.value = value;
@@ -55,5 +61,5 @@ bst.right.left = new BinarySearchTree(6);
 bst.right.right = new BinarySearchTree(7);
 
 console.log(
-  nodeDepths(bst)
+  nodeDepthsRecursive(bst)
 );
