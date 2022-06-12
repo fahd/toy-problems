@@ -12,16 +12,11 @@ class Node {
   // SPACE COMPLEXITY -> O(v) -> Verticees
 
   depthFirstSearch(array) {
-    this.traverse(this, array);
+    array.push(this.name);
+    let node = this;
+    for (let child of node.children) {
+      child.depthFirstSearch(array);
+    } 
     return array;
-  }
-  
-  traverse(node, array) {
-    if (!node) return;
-    array.push(node.name);
-    for (let i = 0; i < node.children.length; i++){
-      let child = node.children[i];
-      this.traverse(child, array);
-    }
   }
 }
