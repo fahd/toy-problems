@@ -1,0 +1,28 @@
+function backtrack (pos){
+  // check if position is valid
+  if (isOutOfBounds(pos)) return false;
+
+  // "interesting park" check
+  // if (checkCond(pos)) return true;
+
+  // mark position as seen
+  seen.add(pos);
+
+  // explore all "neighbors"
+  const neighbors = getNeighbors(pos);
+
+  for (let i = 0; i < neighbors.length; i++){
+    
+    // recurse on each neighbor
+    if (backtrack(neighbors[i])) return true;
+  }
+
+  // not this path, so backtrack
+  seen.remove(pos);
+  return false;
+}
+
+// isOutOfBounds helper function to check validity of pos
+// getNeighbors helper function to generate neighbors
+// checkCond helper function to check unique condition of prob
+
