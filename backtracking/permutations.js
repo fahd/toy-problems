@@ -16,7 +16,7 @@ function permutations(nums) {
       else {
         set.add(el);
         temp.push(el);
-        backtrack(i + 1);
+        backtrack();
         temp.pop();
         set.delete(el);
       }
